@@ -49,7 +49,7 @@ class App extends Component {
       <div className="App">
         <h1>Smurfsss</h1>
         <Smurfs smurfs={this.props.smurfs} />
-        <AddSmurf />
+        <AddSmurf addSmurf={this.state.addSmurf} changeAddSmurf={this.changeAddSmurf} fireAddSmurf={this.fireAddSmurf} />
       </div>
     );
   }
