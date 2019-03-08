@@ -4,7 +4,7 @@ import * as types from './actionTypes';
 
 const smurfURL = 'http://localhost:3333/smurfs';
 
-export const getSmurfAsync = () => dispatch => {
+export const getSmurfsAsync = () => dispatch => {
   dispatch(spinnerOn());
   axios
     .get(smurfURL)

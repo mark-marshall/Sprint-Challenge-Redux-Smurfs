@@ -1,17 +1,45 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import Smurfs from './Smurfs';
+import { getSmurfsAsync, addSmurfAsync } from './state/actionCreators';
 import './App.css';
+import Smurfs from './Smurfs';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getSmurfsAsync();
+  }
+
   render() {
     return (
       <div className="App">
-      Hello World
-      <Smurfs smurfsArray={this.props.smurfsArray}/>
+        Hello World
+        <Smurfs smurfs={this.props.smurfs} />
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    smurfs: state.smurfs,
+    spinner: state.spinner,
+    error: state.error,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      getSmurfsAsync,
+      addSmurfAsync,
+    },
+    dispatch,
+  );
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
