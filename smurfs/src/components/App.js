@@ -83,9 +83,9 @@ class App extends Component {
         name: smurf.name,
         age: smurf.age,
         height: smurf.height,
-      }
-    })
-  }
+      },
+    });
+  };
 
   fireEditSmurf = smurf => {
     this.props.editSmurfAsync(smurf);
@@ -97,27 +97,33 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div className="App">
-        <h1>Smurfsss</h1>
-        <AddSmurf
-          addSmurf={this.state.addSmurf}
-          changeAddSmurf={this.changeAddSmurf}
-          fireAddSmurf={this.fireAddSmurf}
-        />
-        <EditSmurf
-          editSmurf={this.state.editSmurf}
-          changeEditSmurf={this.changeEditSmurf}
-          fireEditSmurf={this.fireEditSmurf}
-          resetEditSmurf={this.resetEditSmurf}
-        />
-        <Smurfs
-          smurfs={this.props.smurfs}
-          fireDeleteSmurf={this.fireDeleteSmurf}
-          setEditSmurfValues={this.setEditSmurfValues}
-        />
-      </div>
-    );
+    if (this.props.error) {
+      return (
+      <div>Uh Oh, Smurrrfffd it: {this.props.error}</div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <h1>Smurfsss</h1>
+          <AddSmurf
+            addSmurf={this.state.addSmurf}
+            changeAddSmurf={this.changeAddSmurf}
+            fireAddSmurf={this.fireAddSmurf}
+          />
+          <EditSmurf
+            editSmurf={this.state.editSmurf}
+            changeEditSmurf={this.changeEditSmurf}
+            fireEditSmurf={this.fireEditSmurf}
+            resetEditSmurf={this.resetEditSmurf}
+          />
+          <Smurfs
+            smurfs={this.props.smurfs}
+            fireDeleteSmurf={this.fireDeleteSmurf}
+            setEditSmurfValues={this.setEditSmurfValues}
+          />
+        </div>
+      );
+    }
   }
 }
 
