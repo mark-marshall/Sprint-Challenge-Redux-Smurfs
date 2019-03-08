@@ -1,4 +1,6 @@
 import React from 'react';
+import PT from 'prop-types';
+
 import './Smurfs.css';
 
 export default function Smurfs({ smurfs, fireDeleteSmurf, setEditSmurfValues }) {
@@ -15,4 +17,15 @@ export default function Smurfs({ smurfs, fireDeleteSmurf, setEditSmurfValues }) 
       ))}
     </div>
   );
+}
+
+Smurfs.propTypes = {
+    smurfs: PT.arrayOf(PT.shape({
+        id: PT.number,
+        name: PT.string.isRequired,
+        age: PT.isRequired,
+        height: PT.string.isRequired,
+      })).isRequired,
+    fireDeleteSmurf: PT.func.isRequired,
+    setEditSmurfValues: PT.func.isRequired,
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PT from 'prop-types';
 
 import './Forms.css';
 
@@ -40,4 +41,17 @@ export default function EditSmurf({
   } else {
     return <div />;
   }
+}
+
+EditSmurf.propTypes = {
+  editMode: PT.bool.isRequired,
+  editSmurf: PT.shape({
+    id: PT.isRequired,
+    name: PT.isRequired,
+    age: PT.isRequired,
+    height: PT.isRequired,
+}).isRequired,
+  changeEditSmurf: PT.func.isRequired,
+  fireEditSmurf: PT.func.isRequired,
+  resetEditSmurf: PT.func.isRequired,
 }

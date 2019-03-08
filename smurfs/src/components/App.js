@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PT from 'prop-types';
 
 import {
   getSmurfsAsync,
@@ -136,6 +137,21 @@ class App extends Component {
       );
     }
   }
+}
+
+App.propTypes = {
+  smurfs: PT.arrayOf(PT.shape({
+    id: PT.number,
+    name: PT.string.isRequired,
+    age: PT.isRequired,
+    height: PT.string.isRequired,
+  })).isRequired,
+  spinner: PT.bool.isRequired,
+  error: PT.string,
+  getSmurfsAsync: PT.func.isRequired,
+  addSmurfAsync: PT.func.isRequired,
+  deleteSmurfAsync: PT.func.isRequired,
+  editSmurfAsync: PT.func.isRequired,
 }
 
 function mapStateToProps(state) {
