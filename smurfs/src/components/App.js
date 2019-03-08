@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getSmurfsAsync, addSmurfAsync } from './state/actionCreators';
+import {
+  getSmurfsAsync,
+  addSmurfAsync,
+  deleteSmurfAsync,
+} from './state/actionCreators';
 import './App.css';
 import Smurfs from './Smurfs';
 import AddSmurf from './AddSmurf';
@@ -13,8 +17,8 @@ class App extends Component {
       name: '',
       age: '',
       height: '',
-    }
-  }
+    },
+  };
 
   componentDidMount() {
     this.props.getSmurfsAsync();
@@ -26,30 +30,38 @@ class App extends Component {
         name: '',
         age: '',
         height: '',
-      }
-    })
-  }
+      },
+    });
+  };
 
   changeAddSmurf = event => {
     this.setState({
       addSmurf: {
         ...this.state.addSmurf,
         [event.target.name]: event.target.value,
-      }
-    })
-  }
+      },
+    });
+  };
 
   fireAddSmurf = smurf => {
     this.props.addSmurfAsync(smurf);
-    this.resetAddSmurf;
-  }
+    this.resetAddSmurf();
+  };
+
+  fireDeleteSmurf = id => {
+    this.props.deleteSmurfAsync(id);
+  };
 
   render() {
     return (
       <div className="App">
         <h1>Smurfsss</h1>
-        <Smurfs smurfs={this.props.smurfs} />
-        <AddSmurf addSmurf={this.state.addSmurf} changeAddSmurf={this.changeAddSmurf} fireAddSmurf={this.fireAddSmurf} />
+        <AddSmurf
+          addSmurf={this.state.addSmurf}
+          changeAddSmurf={this.changeAddSmurf}
+          fireAddSmurf={this.fireAddSmurf}
+        />
+        <Smurfs smurfs={this.props.smurfs} fireDeleteSmurf={this.fireDeleteSmurf} />
       </div>
     );
   }
@@ -68,6 +80,7 @@ function mapDispatchToProps(dispatch) {
     {
       getSmurfsAsync,
       addSmurfAsync,
+      deleteSmurfAsync,
     },
     dispatch,
   );
