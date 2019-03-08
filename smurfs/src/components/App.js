@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
       Hello World
-      <Smurfs smurfs={this.props.smurfs}/>
+      <Smurfs smurfsArray={this.props.smurfsArray}/>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Smurfs({ smurfs }) {
+export default function Smurfs({ smurfsArray }) {
   return (
     <div>
       {smurfs.map(smurf => (
