@@ -6,6 +6,7 @@ import {
   getSmurfsAsync,
   addSmurfAsync,
   deleteSmurfAsync,
+  editSmurfAsync,
 } from './state/actionCreators';
 import './App.css';
 import Smurfs from './Smurfs';
@@ -24,7 +25,7 @@ class App extends Component {
       name: '',
       age: '',
       height: '',
-    }
+    },
   };
 
   componentDidMount() {
@@ -55,6 +56,42 @@ class App extends Component {
     this.resetAddSmurf();
   };
 
+  resetEditSmurf = () => {
+    this.setState({
+      editSmurf: {
+        id: '',
+        name: '',
+        age: '',
+        height: '',
+      },
+    });
+  };
+
+  changeEditSmurf = event => {
+    this.setState({
+      editSmurf: {
+        ...this.state.editSmurf,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  setEditSmurfValues = smurf => {
+    this.setState({
+      editSmurf: {
+        id: smurf.id,
+        name: smurf.name,
+        age: smurf.age,
+        height: smurf.height,
+      }
+    })
+  }
+
+  fireEditSmurf = smurf => {
+    this.props.editSmurfAsync(smurf);
+    this.resetEditSmurf();
+  };
+
   fireDeleteSmurf = id => {
     this.props.deleteSmurfAsync(id);
   };
@@ -68,8 +105,16 @@ class App extends Component {
           changeAddSmurf={this.changeAddSmurf}
           fireAddSmurf={this.fireAddSmurf}
         />
-        <EditSmurf editSmurf={this.state.editSmurf} />
-        <Smurfs smurfs={this.props.smurfs} fireDeleteSmurf={this.fireDeleteSmurf} />
+        <EditSmurf
+          editSmurf={this.state.editSmurf}
+          changeEditSmurf={this.changeEditSmurf}
+          fireEditSmurf={this.fireEditSmurf}
+        />
+        <Smurfs
+          smurfs={this.props.smurfs}
+          fireDeleteSmurf={this.fireDeleteSmurf}
+          setEditSmurfValues={this.setEditSmurfValues}
+        />
       </div>
     );
   }
@@ -89,6 +134,7 @@ function mapDispatchToProps(dispatch) {
       getSmurfsAsync,
       addSmurfAsync,
       deleteSmurfAsync,
+      editSmurfAsync,
     },
     dispatch,
   );

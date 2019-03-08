@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function EditSmurf({ editSmurf }) {
+export default function EditSmurf({ editSmurf, changeEditSmurf, fireEditSmurf }) {
     return (
       <div>
         <input

@@ -33,7 +33,7 @@ export const addSmurfAsync = smurf => dispatch => {
 export const editSmurfAsync = smurf => dispatch => {
   dispatch(spinnerOn());
   axios
-    .put(`smurfURL/${smurf.id}`, smurf)
+    .put(`${smurfURL}/${smurf.id}`, smurf)
     .then(smurfs => {
       dispatch(getSmurfs(smurfs.data));
       dispatch(spinnerOff());
