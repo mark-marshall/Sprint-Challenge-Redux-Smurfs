@@ -30,6 +30,32 @@ export const addSmurfAsync = smurf => dispatch => {
     });
 };
 
+export const editSmurfAsync = smurf => dispatch => {
+  dispatch(spinnerOn());
+  axios
+    .put(`smurfURL/${smurf.id}`, smurf)
+    .then(smurfs => {
+      dispatch(getSmurfs(smurfs.data));
+      dispatch(spinnerOff());
+    })
+    .catch(error => {
+      dispatch(throwError(error.message));
+    });
+};
+
+export const deleteSmurfAsync = id => dispatch => {
+  dispatch(spinnerOn());
+  axios
+    .delete(`${smurfURL}/${id}`)
+    .then(smurfs => {
+      dispatch(getSmurfs(smurfs.data));
+      dispatch(spinnerOff());
+    })
+    .catch(error => {
+      dispatch(throwError(error.message));
+    });
+};
+
 export function getSmurfs(smurfs) {
   return {
     type: types.GET_SMURFS,
