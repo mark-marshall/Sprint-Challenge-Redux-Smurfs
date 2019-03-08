@@ -10,6 +10,7 @@ import {
 import './App.css';
 import Smurfs from './Smurfs';
 import AddSmurf from './AddSmurf';
+import EditSmurf from './EditSmurf';
 
 class App extends Component {
   state = {
@@ -18,6 +19,12 @@ class App extends Component {
       age: '',
       height: '',
     },
+    editSmurf: {
+      id: '',
+      name: '',
+      age: '',
+      height: '',
+    }
   };
 
   componentDidMount() {
@@ -61,6 +68,7 @@ class App extends Component {
           changeAddSmurf={this.changeAddSmurf}
           fireAddSmurf={this.fireAddSmurf}
         />
+        <EditSmurf editSmurf={this.state.editSmurf} />
         <Smurfs smurfs={this.props.smurfs} fireDeleteSmurf={this.fireDeleteSmurf} />
       </div>
     );
