@@ -26,6 +26,7 @@ class App extends Component {
       age: '',
       height: '',
     },
+    editMode: false,
   };
 
   componentDidMount() {
@@ -64,6 +65,7 @@ class App extends Component {
         age: '',
         height: '',
       },
+      editMode: false,
     });
   };
 
@@ -84,6 +86,7 @@ class App extends Component {
         age: smurf.age,
         height: smurf.height,
       },
+      editMode: true,
     });
   };
 
@@ -115,12 +118,14 @@ class App extends Component {
             addSmurf={this.state.addSmurf}
             changeAddSmurf={this.changeAddSmurf}
             fireAddSmurf={this.fireAddSmurf}
+            editMode={this.state.editMode}
           />
           <EditSmurf
             editSmurf={this.state.editSmurf}
             changeEditSmurf={this.changeEditSmurf}
             fireEditSmurf={this.fireEditSmurf}
             resetEditSmurf={this.resetEditSmurf}
+            editMode={this.state.editMode}
           />
           <Smurfs
             smurfs={this.props.smurfs}

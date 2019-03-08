@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default function EditSmurf({ editSmurf, changeEditSmurf, fireEditSmurf, resetEditSmurf  }) {
+export default function EditSmurf({
+  editMode,
+  editSmurf,
+  changeEditSmurf,
+  fireEditSmurf,
+  resetEditSmurf,
+}) {
+  if (editMode) {
     return (
       <div>
         <input
@@ -24,17 +31,11 @@ export default function EditSmurf({ editSmurf, changeEditSmurf, fireEditSmurf, r
           value={editSmurf.height}
           onChange={event => changeEditSmurf(event)}
         />
-        <button
-        onClick={() => fireEditSmurf(editSmurf)}
-        >
-          Edit Smurf
-        </button>
-        <button
-        onClick={() => resetEditSmurf()}
-        >
-        X
-        </button>
+        <button onClick={() => fireEditSmurf(editSmurf)}>Edit Smurf</button>
+        <button onClick={() => resetEditSmurf()}>X</button>
       </div>
     );
+  } else {
+    return <div />;
   }
-  
+}
