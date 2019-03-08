@@ -109,6 +109,7 @@ class App extends Component {
           editSmurf={this.state.editSmurf}
           changeEditSmurf={this.changeEditSmurf}
           fireEditSmurf={this.fireEditSmurf}
+          resetEditSmurf={this.resetEditSmurf}
         />
         <Smurfs
           smurfs={this.props.smurfs}

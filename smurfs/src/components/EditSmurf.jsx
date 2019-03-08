@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function EditSmurf({ editSmurf, changeEditSmurf, fireEditSmurf }) {
+export default function EditSmurf({ editSmurf, changeEditSmurf, fireEditSmurf, resetEditSmurf  }) {
     return (
       <div>
         <input
@@ -29,6 +29,12 @@ export default function EditSmurf({ editSmurf, changeEditSmurf, fireEditSmurf })
         >
           Edit Smurf
         </button>
+        <button
+        onClick={() => resetEditSmurf()}
+        >
+        X
+        </button>
       </div>
     );
   }
+  
