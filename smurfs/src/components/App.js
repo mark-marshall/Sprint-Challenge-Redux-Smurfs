@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { getSmurfsAsync, addSmurfAsync } from './state/actionCreators';
 import './App.css';
 import Smurfs from './Smurfs';
+import AddSmurf from './AddSmurf';
 
 class App extends Component {
   componentDidMount() {
@@ -14,8 +15,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Hello World
+        <h1>Smurfsss</h1>
         <Smurfs smurfs={this.props.smurfs} />
+        <AddSmurf />
       </div>
     );
   }
