@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Forms.css';
+
 export default function AddSmurf({
   editMode,
   addSmurf,
@@ -8,7 +10,7 @@ export default function AddSmurf({
 }) {
   if (!editMode) {
     return (
-      <div>
+      <div className="form">
         <input
           name="name"
           type="text"

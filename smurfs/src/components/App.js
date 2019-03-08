@@ -113,7 +113,7 @@ class App extends Component {
     else {
       return (
         <div className="App">
-          <h1>Smurfsss</h1>
+          <h1>Smurf village</h1>
           <AddSmurf
             addSmurf={this.state.addSmurf}
             changeAddSmurf={this.changeAddSmurf}

@@ -1,10 +1,11 @@
 import React from 'react';
+import './Smurfs.css';
 
 export default function Smurfs({ smurfs, fireDeleteSmurf, setEditSmurfValues }) {
   return (
-    <div>
+    <div className="smurfs">
       {smurfs.map(smurf => (
-        <div key={smurf.name}>
+        <div key={smurf.name} className="smurf">
           <h2>{smurf.name}</h2>
           <p>age: {smurf.age}</p>
           <p>height: {smurf.height}</p>

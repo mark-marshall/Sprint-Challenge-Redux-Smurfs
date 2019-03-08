@@ -1,0 +1,33 @@
+.form {
+    text-align: center;
+}
+
+.form input {
+    padding: 0.2% 1%;
+    width: 100px;
+    height: 30px;
+    margin: 0 0.3%;
+    border-radius: 3px;
+    border: 1 px solid black;
+}   
+
+.form button {
+    margin: 0 0.3%;
+    background-color: white;
+    border: 1px solid white;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.form button:hover {
+    background-color: red;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .form .cancel {
+      width: 50px;
+  }

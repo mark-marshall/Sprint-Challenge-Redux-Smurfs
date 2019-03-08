@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Forms.css';
+
 export default function EditSmurf({
   editMode,
   editSmurf,
@@ -9,7 +11,7 @@ export default function EditSmurf({
 }) {
   if (editMode) {
     return (
-      <div>
+      <div className="form">
         <input
           name="name"
           type="text"
@@ -32,7 +34,7 @@ export default function EditSmurf({
           onChange={event => changeEditSmurf(event)}
         />
         <button onClick={() => fireEditSmurf(editSmurf)}>Edit Smurf</button>
-        <button onClick={() => resetEditSmurf()}>X</button>
+        <button className="cancel" onClick={() => resetEditSmurf()}>X</button>
       </div>
     );
   } else {
