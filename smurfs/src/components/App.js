@@ -99,9 +99,15 @@ class App extends Component {
   render() {
     if (this.props.error) {
       return (
-      <div>Uh Oh, Smurrrfffd it: {this.props.error}</div>
+      <h1>Uh Oh, Smurrrfffd it: {this.props.error}</h1>
       );
-    } else {
+    } 
+    if (this.props.spinner) {
+      return (
+        <h1>Hold on a Smurf, loading...</h1>
+      );
+    }
+    else {
       return (
         <div className="App">
           <h1>Smurfsss</h1>
