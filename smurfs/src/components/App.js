@@ -8,8 +8,40 @@ import Smurfs from './Smurfs';
 import AddSmurf from './AddSmurf';
 
 class App extends Component {
+  state = {
+    addSmurf: {
+      name: '',
+      age: '',
+      height: '',
+    }
+  }
+
   componentDidMount() {
     this.props.getSmurfsAsync();
+  }
+
+  resetAddSmurf = () => {
+    this.setState({
+      addSmurf: {
+        name: '',
+        age: '',
+        height: '',
+      }
+    })
+  }
+
+  changeAddSmurf = event => {
+    this.setState({
+      addSmurf: {
+        ...this.state.addSmurf,
+        [event.target.name]: event.target.value,
+      }
+    })
+  }
+
+  fireAddSmurf = smurf => {
+    this.props.addSmurfAsync(smurf);
+    this.resetAddSmurf;
   }
 
   render() {
